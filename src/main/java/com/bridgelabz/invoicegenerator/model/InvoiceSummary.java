@@ -1,7 +1,6 @@
 package com.bridgelabz.invoicegenerator.model;
 
 public class InvoiceSummary {
-
     private final int numberOfRides;
     private final double totalFare;
     private final double averageFare;
@@ -22,3 +21,4 @@ public class InvoiceSummary {
                 Double.compare(that.averageFare, averageFare) == 0;
     }
 }
+
