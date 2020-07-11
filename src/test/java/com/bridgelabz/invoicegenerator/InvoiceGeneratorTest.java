@@ -71,4 +71,17 @@ public class InvoiceGeneratorTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void givenPremiumAndNormalRideForUserId_ShouldReturnInvoiceSummary() throws InvoiceGeneratorException
+    {
+        String[] userId = {"user1", "user2", "user3"};
+        Ride[][] rides = {{new Ride(5.0, 12, "PREMIUM"), new Ride(2.5, 6, "NORMAL")},
+                {new Ride(3.0, 5, "PREMIUM"), new Ride(0.01, 1, "PREMIUM")},
+                {new Ride(10.0, 15, "NORMAL"), new Ride(2, 30, "PREMIUM")}};
+        invoiceGenerator.addRideToRepository(userId, rides);
+        InvoiceSummary summary = invoiceGenerator.invoiceForUser(userId[2]);
+        InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(rides[2].length, 205.0);
+        Assert.assertEquals(expectedInvoiceSummary, summary);
+    }
 }
