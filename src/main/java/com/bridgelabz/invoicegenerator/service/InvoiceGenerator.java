@@ -1,5 +1,6 @@
 package com.bridgelabz.invoicegenerator.service;
 
+import com.bridgelabz.invoicegenerator.utility.InvoiceSummery;
 import com.bridgelabz.invoicegenerator.utility.Ride;
 
 public class InvoiceGenerator {
@@ -12,11 +13,13 @@ public class InvoiceGenerator {
         return Math.max(totalFare, MINIMUM_FARE);
     }
 
-    public double calculateFare(Ride[] rides) {
+    public InvoiceSummery calculateFare(Ride... rides) {
         double totalFare = 0;
         for (Ride ride : rides) {
             totalFare += ride.distance * COST_PER_KM + ride.time * COST_PER_MINUTE;
         }
-        return totalFare;
+        if (totalFare < MINIMUM_FARE)
+            return new InvoiceSummery(rides.length, MINIMUM_FARE);
+        return new InvoiceSummery(rides.length, totalFare);
     }
 }
