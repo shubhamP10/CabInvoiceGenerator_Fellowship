@@ -11,8 +11,8 @@ public class InvoiceGenerator {
     private static final double MINIMUM_FARE = 5.0;
 
     RideRepository rideRepository;
-    public InvoiceGenerator()
-    {
+
+    public InvoiceGenerator() {
         rideRepository = new RideRepository();
     }
 

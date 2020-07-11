@@ -5,12 +5,10 @@ import com.bridgelabz.invoicegenerator.exception.InvoiceGeneratorException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RideRepository
-{
+public class RideRepository {
     Map<String, Ride[]> userRides = new HashMap<>();
 
-    public void addRideForUser(String userId, Ride[] rides) throws InvoiceGeneratorException
-    {
+    public void addRideForUser(String userId, Ride[] rides) throws InvoiceGeneratorException {
         if (userRides.containsKey(userId))
             throw new InvoiceGeneratorException(InvoiceGeneratorException.ExceptionType.USER_ALREADY_EXISTS,
                     "User ID Already Exists!!!");
@@ -18,8 +16,7 @@ public class RideRepository
             userRides.put(userId, rides);
     }
 
-    public Ride[] getRidesForUser(String userId)
-    {
+    public Ride[] getRidesForUser(String userId) {
         return userRides.get(userId);
     }
 }
