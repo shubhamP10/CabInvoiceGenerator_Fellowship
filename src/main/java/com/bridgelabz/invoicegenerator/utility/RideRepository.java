@@ -1,6 +1,7 @@
 package com.bridgelabz.invoicegenerator.utility;
 
 import com.bridgelabz.invoicegenerator.exception.InvoiceGeneratorException;
+import com.bridgelabz.invoicegenerator.model.Ride;
 
 import java.util.HashMap;
 import java.util.Map;
