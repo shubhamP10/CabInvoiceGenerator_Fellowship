@@ -5,6 +5,8 @@ import com.bridgelabz.invoicegenerator.model.InvoiceSummary;
 import com.bridgelabz.invoicegenerator.model.Ride;
 import com.bridgelabz.invoicegenerator.utility.RideRepository;
 
+import java.util.stream.IntStream;
+
 public class InvoiceGenerator
 {
 
@@ -52,9 +54,14 @@ public class InvoiceGenerator
      */
     public void addRideToRepository(String[] userId, Ride[][] rides) throws InvoiceGeneratorException
     {
-        for (int i = 0; i < userId.length; i++)
-        {
-            rideRepository.addRideForUser(userId[i], rides[i]);
-        }
+        IntStream.range(0, userId.length).forEach(i -> {
+            try
+            {
+                rideRepository.addRideForUser(userId[i], rides[i]);
+            }
+            catch (InvoiceGeneratorException e)
+            {
+                e.printStackTrace();
+            }});
     }
 }
